@@ -34,7 +34,7 @@ set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/
 task :remote_environment do
   # If you're using rbenv, use this to load the rbenv environment.
   # Be sure to commit your .ruby-version or .rbenv-version to your repository.
-  # invoke :'rbenv:load'
+  invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use', 'ruby-2.5.3@default'
@@ -56,9 +56,10 @@ task :deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-    invoke :'deploy:link_shared_paths'
-    # invoke :'bundle:install'
-    # invoke :'rails:db_migrate'
+    # invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_create'
+    invoke :'rails:db_migrate'
     # invoke :'rails:assets_precompile'
     # invoke :'deploy:cleanup'
 
