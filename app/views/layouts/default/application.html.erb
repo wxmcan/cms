@@ -6,8 +6,9 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'default/shared/navigation' %>
-    
-    <%= yield %>
+    <h2><%=link_to 'DeFi Wikipedia', "/", alt: "DeFi Wikipedia Homepage" %></h2>
+    <div class="flex bg-white">
+      <%= yield %>
+    </div>
   </body>
 </html>
