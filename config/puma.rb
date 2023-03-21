@@ -21,7 +21,7 @@ port ENV.fetch("PORT") { 4000 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
-bind "unix:///home/ubuntu/apps/wiki.defi/current/tmp/sockets/puma.sock"
+bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
