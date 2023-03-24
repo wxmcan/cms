@@ -1,4 +1,4 @@
 <% Spina::Page.all.each do |page| %>
-    <%= next if page.title.nil? %>
+    <% next if page.materialized_path.nil? %>
     <%= link_to page.title, page.materialized_path %><br>
 <% end %>
