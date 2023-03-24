@@ -1,2 +1,4 @@
-<% presenter = Spina::MenuPresenter.new(Spina::Page.all) %>
-<%= presenter.to_html %>
+<% Spina::Page.all.each do |page| %>
+    <%= next if page.title.nil? %>
+    <%= link_to page.title, page.materialized_path %><br>
+<% end %>
