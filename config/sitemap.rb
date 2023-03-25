@@ -25,7 +25,12 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
   
-  Spina::Page.all.each do |page|
+  pages = Spina::Page.live
+  pages.each do |page|
+    translations = page.translations
+      translations.each do |p|
+        add p.materialized_path, :lastmod => p.updated_at
+      end
     add page.materialized_path, :lastmod => page.updated_at
   end
 
