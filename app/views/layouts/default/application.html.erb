@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= current_page.title || current_spina_account.name %></title>
     <%= stylesheet_link_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="flex mx-auto flex-row">
-      <div class="basis-1/2">
-          <h2><%=link_to 'DeFi Wikipedia', "/", alt: "DeFi Wikipedia Homepage" %></h2>
-      </div>
-      <div class="absolute top-0 right-0 h-16 w-16 text-gray-500">
-          <%= render 'default/shared/languages' %>
-      </div>
+    <div class="flex mx-auto pl-5">
+      <h2><%=link_to 'DeFi Wikipedia', "/", alt: "DeFi Wikipedia Homepage" %></h2>
     </div>
     <div class="flex bg-white">
       <%= yield %>
+    </div>
+    <div class="flex mx-auto pl-5 text-gray-500">
+          <%= render 'default/shared/languages' %>
     </div>
   </body>
 </html>
