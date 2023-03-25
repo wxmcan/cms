@@ -31,7 +31,6 @@ SitemapGenerator::Sitemap.create do
       translations.each do |p|
         add p.materialized_path, :lastmod => p.updated_at
       end
-    add page.materialized_path, :lastmod => page.updated_at
   end
 
 end
