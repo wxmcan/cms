@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://wiki.defi.io"
+SitemapGenerator::Sitemap.default_host = "https://wiki.defi.io"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
