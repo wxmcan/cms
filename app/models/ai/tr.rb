@@ -2,11 +2,12 @@ class Ai::Tr < ApplicationRecord
 
     def self.active_page
         locales = Spina.config.locales
-        Spina::Page.live.each do |page|
+        Spina::Page.live.order(:id).each do |page|
             next if page.id == 1
+            p "#" * 66, page.id
             next if page.translations.count >= locales.size
             locales.each do |lang|
-                p "=" * 55 + "in #{lang}..."
+                p "=" * 55 + "translating #{lang}..."
                 next if page.translations.find_by_locale(lang)
                 t(page, lang)
                 sleep(30)
@@ -16,9 +17,6 @@ class Ai::Tr < ApplicationRecord
 
     def self.t(page, lang)
         title, content = title_and_content(page, lang)
-        p "-" * 33
-        p title
-        p content
 
         page.assign_attributes(
             "#{lang}_content":[{ type: "Spina::Parts::Text", name: "text", content: content }],
@@ -33,19 +31,21 @@ class Ai::Tr < ApplicationRecord
 
     private
     def self.title_and_content(page, lang)
-        p "*" * 44 + "in translate..."
         title = page.translations.where(locale: 'en').first.title
-        p title_prompt = "Translate the following text into #{lang}: #{title}"
-        content = page.en_content.first.content
-        p content_prompt = "Translate the following text into #{lang}, Preserve Html Tag: #{content}"
+        title_prompt = "Translate the following text into #{lang}: #{title}"
         translated_title = translate(title_prompt)
+
         sleep(15)
+
+        content = page.en_content.first.content
+        content_prompt = "Translate the following text into #{lang}, Preserve decode html tag: #{content}"
         translated_content = translate(content_prompt)
+
         return translated_title, translated_content
     end
 
     def self.translate(prompt)
-        # p "*" * 33
+        p "-" * 33 + '>', prompt
         client = OpenAI::Client.new(access_token: 'sk-xxx')
       
         response = client.completions(
@@ -58,7 +58,9 @@ class Ai::Tr < ApplicationRecord
             max_tokens: 2048
           }
         )
-        p content = response['choices'][0]['text'].gsub("\n", '')
+        p "-" * 22 + '>'
+        content = response['choices'][0]['text'].gsub("\n", '')
+        p content
         content
     end
 end
