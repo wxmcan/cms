@@ -4,18 +4,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= current_page.title || current_spina_account.name %></title>
     <%= stylesheet_link_tag "application" %>
+    <%= turbo_include_tags %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="flex mx-auto pl-5">
-      <h2><%=link_to 'DeFi Wikipedia', "/", alt: "DeFi Wikipedia Homepage" %></h2>
+    <div class="flex mx-auto pl-5 justify-between">
+      <div class="float-left">
+        <h2><%=link_to 'DeFi Wikipedia', "/", alt: "DeFi Wikipedia Homepage" %></h2>
+      </div>
+      <div class="float-right">
+       <%= render 'searches/form' %>
+      </div>
     </div>
-    <div class="flex bg-white">
+    <div id="searches" class="flex bg-white">
       <%= yield %>
     </div>
     <div class="flex mx-auto pl-5 text-gray-500">
           <%= render 'default/shared/languages' %>
     </div>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XX9ZH82QG0"></script>
     <script>

@@ -1,6 +1,20 @@
-<div id="searches">
-<% @results.each do |page| %>
-    <% next if page.materialized_path.nil? %>
-    <%= link_to page.title, page.materialized_path %><br>
-<% end %>
+<div id="searches" class="flex bg-white">
+    <% if @results.count > 0 %>
+        <div class="mx-auto text-xl">
+            <% @results.each do |page| %>
+                <% next if page.materialized_path.nil? %>
+                <%= link_to page.title, page.materialized_path %><br>
+            <% end %>
+        </div>
+    <% else %>
+        <div class="max-w-sm mx-auto bg-white shadow-md rounded-md overflow-hidden">
+        <div class="px-6 px-4 py-4">
+            <div class="font-bold text-xl mb-2">No search results</div>
+            <p class="text-gray-700 text-base">
+            Please check for spelling errors. Thank you.
+            </p>
+        </div>
+        </div>
+    <% end %>
+
 </div>
