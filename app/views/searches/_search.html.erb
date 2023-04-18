@@ -1,0 +1,6 @@
+<div id="searches">
+<% @results.each do |page| %>
+    <% next if page.materialized_path.nil? %>
+    <%= link_to page.title, page.materialized_path %><br>
+<% end %>
+</div>

@@ -53,6 +53,7 @@ gem 'spina', '~> 2.2'
 gem 'sitemap_generator'
 gem 'ruby-openai'
 gem 'kaminari'
+gem 'turbo-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
