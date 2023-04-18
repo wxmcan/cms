@@ -1,4 +1,4 @@
-<% @pages = Spina::Page.order(id: :desc).page(params[:page]).per(10) %>
+<% @pages = Spina::Page.order(id: :asc).page(params[:page]).per(20) %>
 <% @pages.each do |page| %>
     <% next if page.materialized_path.nil? %>
     <%= link_to page.title, page.materialized_path %><br>
