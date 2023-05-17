@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_19_025350) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_190843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_19_025350) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "coins", force: :cascade do |t|
+    t.string "identity"
+    t.string "symbol"
+    t.string "name"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "coin_name"
+    t.string "full_name"
+    t.string "algorithm"
+    t.string "proof_type"
+    t.integer "sort_order"
+    t.decimal "total_coins_mined", precision: 30, scale: 2
+    t.decimal "circulating_supply", precision: 30, scale: 2
+    t.decimal "max_supply", precision: 30, scale: 2
+    t.date "launch_date"
+    t.string "website"
+    t.string "whitepaper"
+    t.boolean "is_trading", default: false
+    t.text "description"
+    t.string "industry"
   end
 
   create_table "spina_accounts", id: :serial, force: :cascade do |t|

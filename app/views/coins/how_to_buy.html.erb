@@ -1,0 +1,15 @@
+<% @title = "How to buy #{@coin.show_name}" %>
+<% @keywords = "#{@coin.symbol}, #{@coin.coin_name}, #{@coin.full_name}" %>
+<% @description = "How to buy #{@coin.show_name}. Where to buy #{@coin.show_name}. How do I trade, convert or sell #{@coin.symbol}?
+" %>
+
+<div class="mx-auto rounded-xl shadow-lg p-4 md:w-1/2 space-y-4">
+  <div class="text-xl">
+    <h1>How to buy <%= @coin.show_name %></h1>
+    <div class="pt-4 opacity-50">
+    </div>
+    <div class=" pt-4">
+	    <%= render 'coins/how_to_buy' %>
+    </div>
+  </div>
+</div>
