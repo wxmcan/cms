@@ -24,6 +24,11 @@ SitemapGenerator::Sitemap.create do
   #   Article.find_each do |article|
   #     add article_path(article), :lastmod => article.updated_at
   #   end
+
+  coins = Coin.limit(100)
+  coins.each do |coin|
+    add "/how-to-buy-#{coin.symbol}", :lastmod => coin.updated_at
+  end
   
   pages = Spina::Page.live
   pages.each do |page|
