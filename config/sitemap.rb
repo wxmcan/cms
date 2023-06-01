@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://wiki.defi.io"
+SitemapGenerator::Sitemap.default_host = "https://guides.defi.io"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
@@ -25,9 +25,14 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
 
-  coins = Coin.limit(100)
+  coins = Coin.limit(4000)
   coins.each do |coin|
     add "/how-to-buy-#{coin.symbol}", :lastmod => coin.updated_at
+  end
+
+  coins = Coin.limit(500)
+  coins.each do |coin|
+    add "/how-to-add-#{coin.symbol}-to-metamask", :lastmod => coin.updated_at
   end
   
   pages = Spina::Page.live
