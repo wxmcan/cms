@@ -1,0 +1,15 @@
+<% @title = "How to add #{@coin.symbol} to MetaMask?" %>
+<% @keywords = "#{@coin.symbol}, #{@coin.coin_name}, #{@coin.full_name}" %>
+<% @description = "How to add #{@coin.symbol} to MetaMask?" %>
+
+<div class="mx-auto rounded-xl shadow-lg p-4 md:w-1/2 space-y-4">
+  <div class="text-xl">
+    <h1>How to add <%= @coin.symbol %> to MetaMask?</h1>
+    <div class="pt-4 opacity-50">
+    </div>
+    <div class=" pt-4">
+	    <%= render 'coins/how_to_add' %>
+    </div>
+    Reminder: MetaMask currently supports only ERC20 standard tokens.
+  </div>
+</div>

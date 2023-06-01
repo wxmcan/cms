@@ -5,6 +5,10 @@ class CoinsController < ApplicationController
     @coin = Coin.find_by_symbol(params[:id])
   end
 
+  def how_to_add
+    @coin = Coin.find_by_symbol(params[:id])
+  end
+
   # GET /coins or /coins.json
   def index
     @coins = Coin.page(params[:id])
